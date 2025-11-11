@@ -5,10 +5,9 @@
 //  Created by Chakra  on 2025-11-10.
 //
 // Models/InventoryItem.swift
-import FirebaseFirestoreSwift
 
 struct InventoryItem: Identifiable, Codable {
-    @DocumentID var id: String?
+    var id: String?
     var name: String
     var quantity: Int
     var price: Double

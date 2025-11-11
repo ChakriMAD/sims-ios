@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct InventoryListView: View {
-    @StateObject private var viewModel = InventoryItemsViewModel()
+    @StateObject var viewModel: InventoryItemsViewModel
     @State private var showingAddSheet = false
+
     
     var body: some View {
         NavigationStack {
@@ -53,5 +54,5 @@ struct InventoryListView: View {
 }
 
 #Preview {
-    InventoryListView()
+    InventoryListView(viewModel: InventoryItemsViewModel(userId: "previewUser"))
 }

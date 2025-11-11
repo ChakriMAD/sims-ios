@@ -46,6 +46,9 @@ struct AddItemView: View {
     }
 }
 
-#Preview {
-    AddItemView(viewModel: InventoryItemsViewModel())
-}
+
+    #Preview {
+        AddItemView(viewModel: InventoryItemsViewModel(userId: "previewUser"))
+    }
+
+

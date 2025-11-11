@@ -8,7 +8,8 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
-import FirebaseFirestoreSwift
+import Combine
+
 
 
 @MainActor
@@ -34,7 +35,19 @@ final class InventoryItemsViewModel: ObservableObject {
 
     func addItem(name: String, quantity: Int, price: Double) {
         let newItem = InventoryItem(name: name, quantity: quantity, price: price, userId: userId)
-        try? db.collection(collection).addDocument(from: newItem)
+        do {
+            try db.collection(collection).addDocument(from: newItem)
+            print("✅ Item added to Firestore successfully.")
+        } catch {
+            print("❌ Failed to add item to Firestore: \(error.localizedDescription)")
+        }
+        do {
+            try db.collection(collection).addDocument(from: newItem)
+            print("✅ Item added to Firestore successfully.")
+        } catch {
+            print("❌ Failed to add item to Firestore: \(error.localizedDescription)")
+        }
+
     }
 
     func deleteItem(at offsets: IndexSet) {
